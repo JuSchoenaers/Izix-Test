@@ -1,0 +1,43 @@
+[
+  {
+    "name": "VIP Demo List",
+    "count": 2,
+    "emails": [
+      "pauline.houot@izix.eu",
+      "julien.schoenaers@gmail.com"
+    ]
+  },
+  {
+    "name": "Management team",
+    "count": 5,
+    "emails": [
+      "alex.moreno@example.com",
+      "jamie.park@example.com",
+      "sophia.rossi@example.com",
+      "noah.legrand@example.com",
+      "chloe.martin@example.com"
+    ]
+  },
+  {
+    "name": "AI & IoT Team",
+    "count": 6,
+    "emails": [
+      "nina.patel@example.com",
+      "liam.wu@example.com",
+      "emma.sato@example.com",
+      "felix.schmidt@example.com",
+      "lucas.jones@example.com",
+      "zoe.dupuis@example.com"
+    ]
+  },
+  {
+    "name": "QA team",
+    "count": 4,
+    "emails": [
+      "pierre.leroy@example.com",
+      "amelia.clark@example.com",
+      "hugo.verdi@example.com",
+      "maya.kim@example.com"
+    ]
+  }
+]
