@@ -1,0 +1,8 @@
+**/.scannerwork/
+**/docker-compose.sonarqube.yml
+**/sonar-project.properties
+**/sonar-issues.json
+!rsvp/sonar-issues.json
+.DS_Store
+.scannerwork/
+commit-sequence.sh
