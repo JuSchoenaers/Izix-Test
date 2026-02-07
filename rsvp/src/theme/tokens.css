@@ -1,0 +1,41 @@
+:root {
+    /* Brand (Izix-ish) */
+    --izix-brand-500: #35eecb;
+    --izix-brand-600: #2dcaaD;
+    --izix-brand-700: #25a78e;
+
+    /* Neutrals */
+    --izix-bg-canvas: #ffffff;
+    --izix-bg-surface: #fcfcfd;
+    --izix-border: #e2e8f0;
+    --izix-text-primary: #111827;
+    --izix-text-secondary: #475569;
+
+    /* State layers (neutral overlays — matches Material behavior) */
+    --izix-state-hover: rgba(0, 0, 0, 0.06);
+    --izix-state-pressed: rgba(0, 0, 0, 0.10);
+    --izix-state-selected: rgba(0, 0, 0, 0.08);
+
+    /* Focus ring (brand) */
+    --izix-focus-ring: rgba(53, 238, 203, 0.35);
+
+    /* Radii */
+    --izix-radius-sm: 10px;
+    --izix-radius-md: 14px;
+    --izix-radius-pill: 999px;
+}
+
+/* Optional dark scheme */
+:root[data-theme="dark"] {
+    --izix-bg-canvas: #0b1220;
+    --izix-bg-surface: #111827;
+    --izix-border: #334155;
+    --izix-text-primary: #ffffff;
+    --izix-text-secondary: #cbd5e1;
+
+    --izix-state-hover: rgba(255, 255, 255, 0.08);
+    --izix-state-pressed: rgba(255, 255, 255, 0.12);
+    --izix-state-selected: rgba(255, 255, 255, 0.10);
+
+    --izix-focus-ring: rgba(53, 238, 203, 0.35);
+}
