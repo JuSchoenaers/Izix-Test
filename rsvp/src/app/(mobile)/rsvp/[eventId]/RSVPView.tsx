@@ -30,12 +30,12 @@ export function RSVPView({ event, token = null, tokenEmail = null }: RSVPViewPro
     const [isPending, startTransition] = useTransition();
 
     useEffect(() => {
-        const storedId = localStorage.getItem(getReservationStorageKey(event.id));
+        const storedId = localStorage.getItem(getReservationStorageKey(event.id, token));
         if (storedId) {
             setReservationId(storedId);
             setState('confirmed');
         }
-    }, [event.id]);
+    }, [event.id, token]);
 
     useEffect(() => {
         if (tokenEmail) {
@@ -75,7 +75,7 @@ export function RSVPView({ event, token = null, tokenEmail = null }: RSVPViewPro
             );
 
             if (result.success && result.reservationId) {
-                localStorage.setItem(getReservationStorageKey(event.id), result.reservationId);
+                localStorage.setItem(getReservationStorageKey(event.id, token), result.reservationId);
                 setReservationId(result.reservationId);
                 setState('confirmed');
             } else {
@@ -86,7 +86,8 @@ export function RSVPView({ event, token = null, tokenEmail = null }: RSVPViewPro
     };
 
     const handleCancel = async () => {
-        const currentId = reservationId || localStorage.getItem(getReservationStorageKey(event.id));
+        const currentId =
+            reservationId || localStorage.getItem(getReservationStorageKey(event.id, token));
         if (!currentId) {
             setError('No reservation found to cancel');
             return;
@@ -99,7 +100,7 @@ export function RSVPView({ event, token = null, tokenEmail = null }: RSVPViewPro
             const result = await cancelReservationAction(currentId, token);
             
             if (result.success) {
-                localStorage.removeItem(getReservationStorageKey(event.id));
+                localStorage.removeItem(getReservationStorageKey(event.id, token));
                 setReservationId(null);
                 setName('');
                 setLicensePlate('');
