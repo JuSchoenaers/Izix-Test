@@ -32,6 +32,7 @@ export function MonthEventsList({
                     const status = getEventStatusForEvent(event);
                     const isUpcoming = status === "upcoming";
                     const canOpen = status !== "complete" && status !== EVENT_LIFECYCLE_STATUS.cancelled;
+                    const isDisabled = status === "complete" || status === EVENT_LIFECYCLE_STATUS.cancelled;
 
                     return (
                         <Card
@@ -44,6 +45,7 @@ export function MonthEventsList({
                                 alignItems: "center",
                                 justifyContent: "space-between",
                                 gap: 1,
+                                opacity: isDisabled ? 0.5 : 1,
                             }}
                         >
                             <Box sx={{ minWidth: 0 }}>

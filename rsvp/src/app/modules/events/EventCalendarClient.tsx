@@ -158,7 +158,7 @@ export function EventCalendarClient({ events }: EventCalendarClientProps) {
                 />
                 <TextField
                     size="small"
-                    label="Calendar time frame"
+                    label="View"
                     select
                     value={String(timeframe)}
                     onChange={(event) => setTimeframe(Number(event.target.value) as TimeframeOption)}

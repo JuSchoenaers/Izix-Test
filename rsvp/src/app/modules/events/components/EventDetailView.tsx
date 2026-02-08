@@ -13,10 +13,8 @@ import { GuestParkingCard } from "@/app/modules/events/components/GuestParkingCa
 import { RSVPProgressCard } from "@/app/modules/events/components/RSVPProgressCard";
 import { useRouter } from "next/navigation";
 import { format, parseISO } from "date-fns";
-import { useEffect, useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState } from "react";
 import rsvpLists from "@/../data/seed/rsvpLists.json";
-import { cancelEventActionNoRedirect } from "@/app/(desktop)/events/actions";
-import { EVENT_LIFECYCLE_STATUS } from "@/lib/types/events";
 import { EventDetailHeader } from "./EventDetailHeader";
 import { EventInfoCard } from "./EventInfoCard";
 import { ShareRsvpDialog } from "./ShareRsvpDialog";
@@ -44,18 +42,17 @@ export function EventDetailView({ event }: EventDetailViewProps) {
     const [snackbar, setSnackbar] = useState<{ message: string; severity: "success" | "error" } | null>(null);
     const [tokenLinks, setTokenLinks] = useState<string[]>([]);
     const [origin, setOrigin] = useState("");
-    const [isCancelling, startCancelTransition] = useTransition();
     const rsvpUrl = origin ? `${origin}/rsvp/${event.id}` : `/rsvp/${event.id}`;
-    const selectedLists = event.rsvpListNames ?? [];
     const selectedEmails = useMemo(() => {
         if (event.eventType === "Public") {
             return event.publicInviteEmails ?? [];
         }
+        const selectedLists = event.rsvpListNames ?? [];
         const emails = mailingLists
             .filter((list) => selectedLists.includes(list.name))
             .flatMap((list) => list.emails);
         return Array.from(new Set(emails));
-    }, [event.eventType, event.publicInviteEmails, mailingLists, selectedLists]);
+    }, [event.eventType, event.publicInviteEmails, event.rsvpListNames, mailingLists]);
 
     useEffect(() => {
         setOrigin(globalThis.location?.origin ?? "");
@@ -154,31 +151,15 @@ export function EventDetailView({ event }: EventDetailViewProps) {
         alert("Reminder functionality would send emails to guests who haven't responded yet.");
     };
 
-    const handleCancelEvent = () => {
-        startCancelTransition(async () => {
-            try {
-                await cancelEventActionNoRedirect(event.id);
-                router.replace(`/events/${event.id}`);
-                router.refresh();
-            } catch {
-                setSnackbar({ message: "Failed to cancel event", severity: "error" });
-            }
-        });
-    };
-
     return (
         <Box sx={{ minHeight: "100vh", backgroundColor: "background.default" }}>
             <EventDetailHeader
-                eventName={event.name}
                 inviteOnly={event.inviteOnly}
                 rsvpRequired={event.rsvpRequired}
                 onBack={() => router.push("/events")}
                 onEdit={() => router.push(`/events/${event.id}/edit`, { scroll: false })}
                 onShare={handleShareRSVP}
-                onCancel={handleCancelEvent}
                 showEdit={event.rsvpReceived === 0}
-                showCancel={event.rsvpReceived <= 1}
-                cancelDisabled={event.status === EVENT_LIFECYCLE_STATUS.cancelled || isCancelling}
             />
 
             <Container maxWidth="lg" sx={{ py: { xs: 2, md: 4 } }}>
@@ -222,7 +203,9 @@ export function EventDetailView({ event }: EventDetailViewProps) {
                 onClose={() => setSnackbar(null)}
                 anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
-                {snackbar ? <Alert severity={snackbar.severity}>{snackbar.message}</Alert> : null}
+                {snackbar ? (
+                    <Alert severity={snackbar.severity}>{snackbar.message}</Alert>
+                ) : undefined}
             </Snackbar>
         </Box>
     );

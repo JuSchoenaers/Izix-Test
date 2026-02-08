@@ -64,18 +64,18 @@ export default function EditEventPage() {
                     
                     <Divider />
                     <Typography variant="caption" color="text.secondary">
-                        Basic information
+                        Event information
                     </Typography>
                     
                     <TextField 
                         name="name" 
-                        label="Event name" 
+                        label="Name" 
                         defaultValue={event.name}
                         required 
                     />
                     <TextField 
                         name="startsAtISO" 
-                        label="Event date" 
+                        label="Date" 
                         type="datetime-local"
                         defaultValue={event.startsAtISO.slice(0, 16)}
                         required 
@@ -98,7 +98,7 @@ export default function EditEventPage() {
                         type="number" 
                         defaultValue={event.parkingCapacity}
                         slotProps={{ htmlInput: { min: 1 } }}
-                        helperText="Spots will be held for guests and released if unused"
+                        helperText="Spots will be held for guests and released if unused upon start of the event"
                         required 
                     />
                     

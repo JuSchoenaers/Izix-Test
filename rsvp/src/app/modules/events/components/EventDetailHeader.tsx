@@ -6,34 +6,24 @@ import {
     Icon,
     Stack,
     Toolbar,
-    Tooltip,
-    Typography,
 } from "@mui/material";
 
 type EventDetailHeaderProps = Readonly<{
-    eventName: string;
     inviteOnly: boolean;
     rsvpRequired: boolean;
     onBack: () => void;
     onEdit: () => void;
     onShare: () => void;
-    onCancel: () => void;
     showEdit: boolean;
-    showCancel: boolean;
-    cancelDisabled: boolean;
 }>;
 
 export function EventDetailHeader({
-    eventName,
     inviteOnly,
     rsvpRequired,
     onBack,
     onEdit,
     onShare,
-    onCancel,
     showEdit,
-    showCancel,
-    cancelDisabled,
 }: EventDetailHeaderProps) {
     return (
         <AppBar position="static">
@@ -59,9 +49,6 @@ export function EventDetailHeader({
                     >
                         Back
                     </Button>
-                    <Typography variant="h5" fontWeight={700}>
-                        {eventName}
-                    </Typography>
                 </Stack>
 
                 <Box
@@ -91,21 +78,6 @@ export function EventDetailHeader({
                     alignItems={{ xs: "stretch", sm: "center" }}
                     sx={{ flex: { md: 1 }, justifyContent: { md: "flex-end" }, width: { xs: "100%", md: "auto" }, order: 3 }}
                 >
-                    {showCancel ? (
-                        <Tooltip title="Cancel event">
-                            <span>
-                                <Button
-                                    variant="outlined"
-                                    color="error"
-                                    onClick={onCancel}
-                                    disabled={cancelDisabled}
-                                    sx={{ width: { xs: "100%", sm: "auto" }, minWidth: 40, px: 1 }}
-                                >
-                                    <Icon className="material-icons">cancel</Icon>
-                                </Button>
-                            </span>
-                        </Tooltip>
-                    ) : null}
                     {showEdit ? (
                         <Button
                             variant="outlined"

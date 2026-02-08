@@ -28,7 +28,7 @@ export function RSVPProgressCard({ event, onSendReminder }: RSVPProgressCardProp
                         RSVP Received - <strong>{rsvpReceived}</strong>
                     </Typography>
                     <Typography variant="body2">
-                        Need parking - <strong>{needParking}</strong>
+                        Claimed - <strong>{needParking}</strong>
                     </Typography>
                 </Stack>
                 

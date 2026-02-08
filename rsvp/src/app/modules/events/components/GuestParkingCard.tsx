@@ -38,7 +38,7 @@ export function GuestParkingCard({ event, onBack }: GuestParkingCardProps) {
                     sx={{ mb: { xs: 2, md: 3 } }}
                 >
                     <StatBox label="Claimed" value={`${claimed} / ${reserved}`} />
-                    <StatBox label="Remaining" value={remaining} highlighted />
+                    <StatBox label="Remaining" value={remaining} />
                 </Stack>
                 
                 <Box sx={{ mb: 2 }}>

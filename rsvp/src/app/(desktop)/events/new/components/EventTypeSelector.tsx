@@ -8,7 +8,7 @@ type EventTypeSelectorProps = Readonly<{
 export function EventTypeSelector({ value, onChange }: EventTypeSelectorProps) {
     return (
         <FormControl>
-            <FormLabel sx={{ mb: 1 }}>Event visibility</FormLabel>
+            <FormLabel sx={{ mb: 1 }}>Type</FormLabel>
             <RadioGroup
                 value={value}
                 onChange={(event) => onChange(event.target.value as "Public" | "Private")}

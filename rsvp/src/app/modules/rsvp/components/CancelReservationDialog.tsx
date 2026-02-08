@@ -29,13 +29,10 @@ export function CancelReservationDialog({
             }}
         >
             <DialogTitle sx={{ textAlign: "center", fontWeight: 700 }}>
-                Confirm cancellation?
+                Cancel your reservation ?
             </DialogTitle>
             <DialogContent>
                 <Stack spacing={1.5} sx={{ mt: 1 }}>
-                    <Typography variant="body2" color="text.secondary" textAlign="center">
-                        Your parking spot will be released.
-                    </Typography>
                     <Stack direction="row" spacing={1.5} justifyContent="center">
                         <Button
                             variant="outlined"
@@ -43,7 +40,7 @@ export function CancelReservationDialog({
                             disabled={isCancelling}
                             sx={{ minWidth: 110 }}
                         >
-                            Cancel
+                            No
                         </Button>
                         <Button
                             variant="contained"
@@ -55,7 +52,7 @@ export function CancelReservationDialog({
                             {isCancelling ? (
                                 <CircularProgress size={18} color="inherit" />
                             ) : (
-                                "Confirm"
+                                "Yes"
                             )}
                         </Button>
                     </Stack>

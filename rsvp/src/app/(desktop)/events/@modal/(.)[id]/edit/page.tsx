@@ -133,15 +133,15 @@ export default function EditEventModal() {
 
                 <Divider />
                 <Typography variant="caption" color="text.secondary">
-                    Basic information
+                    Event information
                 </Typography>
 
-                <TextField name="name" label="Event name" defaultValue={event.name} required />
+                <TextField name="name" label="Name" defaultValue={event.name} required />
 
                 <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                     <TextField
                         name="eventDate"
-                        label="Event date"
+                        label="Date"
                         type="date"
                         defaultValue={eventDateValue}
                         slotProps={{ inputLabel: { shrink: true } }}
@@ -150,7 +150,7 @@ export default function EditEventModal() {
                     />
                     <TextField
                         name="eventTime"
-                        label="Event time"
+                        label="Time"
                         type="time"
                         defaultValue={eventTimeValue}
                         slotProps={{ inputLabel: { shrink: true } }}
@@ -171,7 +171,7 @@ export default function EditEventModal() {
                 <TextField name="location" label="Location" defaultValue={event.location} required />
 
                 <FormControl>
-                    <FormLabel>Event type</FormLabel>
+                    <FormLabel>Type</FormLabel>
                     <RadioGroup
                         row
                         value={eventType}

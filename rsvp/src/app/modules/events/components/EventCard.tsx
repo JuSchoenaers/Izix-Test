@@ -18,12 +18,14 @@ export function EventCard({ event, fullWidth = false }: EventCardProps) {
     const formattedDate = formatEventDate(event.startsAtISO);
     const showParking = status === "upcoming";
     const showOpenButton = status !== EVENT_LIFECYCLE_STATUS.cancelled && status !== "complete";
+    const isDisabled = status === "complete" || status === EVENT_LIFECYCLE_STATUS.cancelled;
 
     return (
         <Card
             sx={{
                 width: fullWidth ? "100%" : { xs: "100%", sm: 320 },
                 mx: fullWidth ? 0 : { xs: 0, sm: "auto" },
+                opacity: isDisabled ? 0.5 : 1,
             }}
         >
             <CardHeader

@@ -29,13 +29,13 @@ export default function NewEventPage() {
                 <Stack component="form" action={createEventAction} spacing={2}>
                     <Divider />
                     <Typography variant="caption" color="text.secondary">
-                        Basic information
+                        Event information
                     </Typography>
                     
                     <TextField 
                         name="name" 
-                        label="Event name" 
-                        placeholder="Event name"
+                        label="Name" 
+                        placeholder="Name"
                         required 
                     />
                     
@@ -49,7 +49,7 @@ export default function NewEventPage() {
                     
                     <TextField 
                         name="location" 
-                        label="Event location" 
+                        label="Location" 
                         placeholder="Address"
                         required 
                     />

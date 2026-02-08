@@ -14,6 +14,7 @@ import {
 import Link from "next/link";
 import type { Event } from "@/lib/server/eventsStore";
 import { formatEventDate, getEventStatusForEvent, getStatusColor, getStatusLabel } from "@/lib/utils/dateUtils";
+import { EVENT_LIFECYCLE_STATUS } from "@/lib/types/events";
 import { getStatusBadgeColor } from "./getStatusBadgeColor";
 
 type CollapsibleEventCardProps = Readonly<{
@@ -32,6 +33,7 @@ export function CollapsibleEventCard({ event, expanded, onToggle, fullWidth = fa
     const canOpen = isCancelled === false && status !== "complete";
     const showBadge = expanded === false;
     const formattedDate = formatEventDate(event.startsAtISO);
+    const isDisabled = status === "complete" || status === EVENT_LIFECYCLE_STATUS.cancelled;
 
     return (
         <Card
@@ -39,6 +41,7 @@ export function CollapsibleEventCard({ event, expanded, onToggle, fullWidth = fa
             sx={{
                 width: fullWidth ? "100%" : { xs: "100%", sm: 320 },
                 mx: fullWidth ? 0 : { xs: 0, sm: "auto" },
+                opacity: isDisabled ? 0.5 : 1,
             }}
         >
             <CardContent sx={{ pb: 1.5 }}>

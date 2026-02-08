@@ -42,13 +42,13 @@ export function EventForm({
 
             <Divider />
             <Typography variant="caption" color="text.secondary">
-                Basic information
+                Event information
             </Typography>
 
             <TextField
                 name="name"
-                label="Event name"
-                placeholder="Event name"
+                label="Name"
+                placeholder="Name"
                 defaultValue={defaults?.name ?? ""}
                 required
             />
@@ -56,7 +56,7 @@ export function EventForm({
             <Stack direction="row" spacing={2}>
                 <TextField
                     name="eventDate"
-                    label="Event date"
+                    label="Date"
                     type="date"
                     required
                     defaultValue={defaults?.eventDate ?? ""}
@@ -68,7 +68,7 @@ export function EventForm({
                 />
                 <TextField
                     name="eventTime"
-                    label="Event time"
+                    label="Time"
                     type="time"
                     required
                     defaultValue={defaults?.eventTime ?? ""}
@@ -81,7 +81,7 @@ export function EventForm({
 
             <TextField
                 name="location"
-                label="Event location"
+                label="Location"
                 placeholder="Address"
                 defaultValue={defaults?.location ?? ""}
                 required
@@ -98,7 +98,7 @@ export function EventForm({
                 type="number"
                 defaultValue={defaults?.parkingCapacity ?? 10}
                 slotProps={{ htmlInput: { min: 1 } }}
-                helperText="Spots will be held for guests and released if unused"
+                helperText="Spots will be held for guests and released if unused upon start of the event"
                 required
             />
 
